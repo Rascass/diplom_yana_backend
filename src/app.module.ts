@@ -12,7 +12,6 @@ import { AuthModule } from './auth/auth.module';
 import { RolesModel } from './roles/roles.model';
 import { TitlesModel } from './titles/titles.model';
 import { UsersModel } from './auth/users.model';
-import { RidersModule } from './riders/riders.module';
 import { PersonsModule } from './persons/persons.module';
 
 @Module({
@@ -36,7 +35,6 @@ import { PersonsModule } from './persons/persons.module';
     TitlesModule,
     HourseTypesModule,
     AuthModule,
-    RidersModule,
     PersonsModule,
   ],
   controllers: [AppController],
