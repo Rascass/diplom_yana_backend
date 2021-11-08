@@ -1,11 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Table, Model } from 'sequelize-typescript';
+import { Column, DataType, Table, Model, HasMany } from 'sequelize-typescript';
+import { HoursesModel } from 'src/hourses/hourses.model';
 
 export interface HourseTypesModelCreationAttrib {
   name: string;
 }
 
-@Table({ tableName: 'Titles' })
+@Table({ tableName: 'HourseTypes' })
 export class HourseTypesModel extends Model<
   HourseTypesModel,
   HourseTypesModelCreationAttrib
@@ -26,4 +27,7 @@ export class HourseTypesModel extends Model<
     allowNull: false,
   })
   name: string;
+
+  @HasMany(() => HoursesModel)
+  hourses: HoursesModel[];
 }

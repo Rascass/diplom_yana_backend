@@ -7,15 +7,15 @@ import { HourseTypesModel } from './hourse-types.model';
 export class HourseTypesService {
   constructor(
     @InjectModel(HourseTypesModel)
-    private readonly titleModel: typeof HourseTypesModel,
+    private readonly hourseTypesModel: typeof HourseTypesModel,
   ) {}
 
   async create(dto: { name: string }) {
-    return await this.titleModel.create(dto);
+    return await this.hourseTypesModel.create(dto);
   }
 
   async get(id: number) {
-    let res = await this.titleModel.findOne({
+    let res = await this.hourseTypesModel.findOne({
       where: { id },
     });
     if (!res) {
@@ -26,7 +26,7 @@ export class HourseTypesService {
 
   async update(id: number, dto: { name: string }) {
     let res = (
-      await this.titleModel.update(
+      await this.hourseTypesModel.update(
         { ...dto },
         { where: { id }, returning: true },
       )
@@ -38,7 +38,7 @@ export class HourseTypesService {
   }
 
   async delete(id: number) {
-    let res = await this.titleModel.destroy({ where: { id } });
+    let res = await this.hourseTypesModel.destroy({ where: { id } });
     if (!res) {
       throw new BadRequestException(NOT_FOUND_ERROR);
     }
