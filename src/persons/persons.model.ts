@@ -17,12 +17,14 @@ export class PersonsModel extends Model {
   @ApiProperty({ example: 'f_name', description: 'Имя' })
   @Column({
     type: DataType.STRING,
+    allowNull: false,
   })
   f_name: string;
 
   @ApiProperty({ example: 's_name', description: 'Фамилия' })
   @Column({
     type: DataType.STRING,
+    allowNull: false,
   })
   s_name: string;
 
@@ -35,6 +37,7 @@ export class PersonsModel extends Model {
   @ApiProperty({ example: 'yy/MM/dd', description: 'День рождения' })
   @Column({
     type: DataType.DATEONLY,
+    allowNull: false,
   })
   birthday: Date;
 
