@@ -6,11 +6,14 @@ import {
   Model,
   BelongsTo,
   ForeignKey,
+  HasOne,
 } from 'sequelize-typescript';
+import { PersonsModel } from 'src/persons/persons.model';
 import { RolesModel } from 'src/roles/roles.model';
 
+export interface UsersModelCreationAttrib {}
 @Table({ tableName: 'Users' })
-export class UsersModel extends Model {
+export class UsersModel extends Model<UsersModel, UsersModelCreationAttrib> {
   @ApiProperty({ example: '1', description: 'Уникальный индификатор' })
   @Column({
     type: DataType.INTEGER,
@@ -43,11 +46,16 @@ export class UsersModel extends Model {
   role_id: number;
 
   @ApiProperty({ example: '1', description: 'id персоны' })
+  @ForeignKey(() => PersonsModel)
   @Column({
     type: DataType.INTEGER,
+    unique: true,
   })
   person_id: number;
 
   @BelongsTo(() => RolesModel)
   role: RolesModel;
+
+  @BelongsTo(() => PersonsModel)
+  person: PersonsModel;
 }

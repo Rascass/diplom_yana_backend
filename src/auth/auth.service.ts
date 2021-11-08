@@ -5,6 +5,7 @@ import { AuthDto } from './dto/auth.dto';
 import { UsersModel } from './users.model';
 import { genSalt, hash, compare } from 'bcryptjs';
 import { USER_NOT_FOUND_ERROR, WRONG_PASSWORD_ERROR } from './auth.constants';
+import { UserCreateDto } from './dto/users-create.dto';
 
 @Injectable()
 export class AuthService {
@@ -13,11 +14,13 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async createUser(dto: AuthDto) {
+  async createUser(dto: UserCreateDto) {
     const salt = await genSalt(10);
     const newUser = new this.userModel({
       login: dto.login,
       pass: await hash(dto.pass, salt),
+      role_id: dto.role_id,
+      person_id: dto.person_id,
     });
     return newUser.save();
   }

@@ -1,0 +1,42 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
+import { UsersModel } from 'src/auth/users.model';
+
+@Table({ tableName: 'Persons' })
+export class PersonsModel extends Model {
+  @ApiProperty({ example: '1', description: 'Уникальный индификатор' })
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    unique: true,
+    primaryKey: true,
+  })
+  id: number;
+
+  @ApiProperty({ example: 'f_name', description: 'Имя' })
+  @Column({
+    type: DataType.STRING,
+  })
+  f_name: string;
+
+  @ApiProperty({ example: 's_name', description: 'Фамилия' })
+  @Column({
+    type: DataType.STRING,
+  })
+  s_name: string;
+
+  @ApiProperty({ example: 'l_name', description: 'Отчество' })
+  @Column({
+    type: DataType.STRING,
+  })
+  l_name: string;
+
+  @ApiProperty({ example: 'yy/MM/dd', description: 'День рождения' })
+  @Column({
+    type: DataType.DATEONLY,
+  })
+  birthday: Date;
+
+  @HasOne(() => UsersModel)
+  users: UsersModel;
+}

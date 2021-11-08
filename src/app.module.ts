@@ -13,6 +13,7 @@ import { RolesModel } from './roles/roles.model';
 import { TitlesModel } from './titles/titles.model';
 import { UsersModel } from './auth/users.model';
 import { PersonsModule } from './persons/persons.module';
+import { PersonsModel } from './persons/persons.model';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { PersonsModule } from './persons/persons.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_NAME,
       autoLoadModels: true,
-      models: [NewsModel, RolesModel, TitlesModel, UsersModel],
+      models: [NewsModel, RolesModel, TitlesModel, UsersModel, PersonsModel],
       logging: false,
     }),
     NewsModule,

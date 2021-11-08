@@ -10,6 +10,7 @@ import {
 import { ALREADY_REGISTRED_ERROR } from './auth.constants';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
+import { UserCreateDto } from './dto/users-create.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -17,7 +18,7 @@ export class AuthController {
 
   @UsePipes(new ValidationPipe())
   @Post('register')
-  async register(@Body() dto: AuthDto) {
+  async register(@Body() dto: UserCreateDto) {
     const oldUser = await this.authService.findUser(dto.login);
     if (oldUser) {
       throw new BadRequestException(ALREADY_REGISTRED_ERROR);
@@ -31,5 +32,12 @@ export class AuthController {
   async login(@Body() { login, pass }: AuthDto) {
     const user = await this.authService.validateUser(login, pass);
     return this.authService.login(user.login);
+  }
+
+  @UsePipes(new ValidationPipe())
+  @Post('create')
+  async create(@Body() dto: UserCreateDto) {
+    const user = await this.authService.createUser(dto);
+    return user;
   }
 }
