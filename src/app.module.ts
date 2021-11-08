@@ -14,6 +14,8 @@ import { TitlesModel } from './titles/titles.model';
 import { UsersModel } from './auth/users.model';
 import { PersonsModule } from './persons/persons.module';
 import { PersonsModel } from './persons/persons.model';
+import { RidersModule } from './riders/riders.module';
+import { RidersModel } from './riders/riders.model';
 
 @Module({
   imports: [
@@ -28,7 +30,14 @@ import { PersonsModel } from './persons/persons.model';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_NAME,
       autoLoadModels: true,
-      models: [NewsModel, RolesModel, TitlesModel, UsersModel, PersonsModel],
+      models: [
+        NewsModel,
+        RolesModel,
+        TitlesModel,
+        UsersModel,
+        PersonsModel,
+        RidersModel,
+      ],
       logging: false,
     }),
     NewsModule,
@@ -37,6 +46,7 @@ import { PersonsModel } from './persons/persons.model';
     HourseTypesModule,
     AuthModule,
     PersonsModule,
+    RidersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
