@@ -25,6 +25,8 @@ import { HoursesOwnersModule } from './hourses-owners/hourses-owners.module';
 import { HoursesOwnersModel } from './hourses-owners/hourses-owners.model';
 import { ProductsModule } from './products/products.module';
 import { ProductsModel } from './products/products.model';
+import { CompetitionsModule } from './competitions/competitions.module';
+import { CompetitionsModel } from './competitions/competitions.model';
 
 @Module({
   imports: [
@@ -51,6 +53,7 @@ import { ProductsModel } from './products/products.model';
         HoursesModel,
         HoursesOwnersModel,
         ProductsModel,
+        CompetitionsModel,
       ],
       logging: false,
     }),
@@ -65,6 +68,7 @@ import { ProductsModel } from './products/products.model';
     ClubsModule,
     HoursesOwnersModule,
     ProductsModule,
+    CompetitionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
