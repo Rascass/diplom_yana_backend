@@ -19,6 +19,8 @@ import { RidersModel } from './riders/riders.model';
 import { HoursesModule } from './hourses/hourses.module';
 import { HourseTypesModel } from './hourse-types/hourse-types.model';
 import { HoursesModel } from './hourses/hourses.model';
+import { ClubsModule } from './clubs/clubs.module';
+import { ClubsModel } from './clubs/clubs.model';
 
 @Module({
   imports: [
@@ -41,6 +43,7 @@ import { HoursesModel } from './hourses/hourses.model';
         PersonsModel,
         RidersModel,
         HourseTypesModel,
+        ClubsModel,
         HoursesModel,
       ],
       logging: false,
@@ -53,6 +56,7 @@ import { HoursesModel } from './hourses/hourses.model';
     PersonsModule,
     RidersModule,
     HoursesModule,
+    ClubsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
