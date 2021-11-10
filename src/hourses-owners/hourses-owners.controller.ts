@@ -12,7 +12,7 @@ import { IdValidationPipe } from 'src/pipes/id-validation.pipes';
 import { HourseOwnerDto } from './dto/hourse-owners.dto';
 import { HoursesOwnersService } from './hourses-owners.service';
 
-@ApiTags('Владельци лошадей')
+@ApiTags('Владельцы лошадей')
 @Controller('hourses-owners')
 export class HoursesOwnersController {
   constructor(private readonly hoursesOwnersService: HoursesOwnersService) {}
