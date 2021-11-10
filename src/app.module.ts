@@ -23,6 +23,8 @@ import { ClubsModule } from './clubs/clubs.module';
 import { ClubsModel } from './clubs/clubs.model';
 import { HoursesOwnersModule } from './hourses-owners/hourses-owners.module';
 import { HoursesOwnersModel } from './hourses-owners/hourses-owners.model';
+import { ProductsModule } from './products/products.module';
+import { ProductsModel } from './products/products.model';
 
 @Module({
   imports: [
@@ -48,6 +50,7 @@ import { HoursesOwnersModel } from './hourses-owners/hourses-owners.model';
         ClubsModel,
         HoursesModel,
         HoursesOwnersModel,
+        ProductsModel,
       ],
       logging: false,
     }),
@@ -61,6 +64,7 @@ import { HoursesOwnersModel } from './hourses-owners/hourses-owners.model';
     HoursesModule,
     ClubsModule,
     HoursesOwnersModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
