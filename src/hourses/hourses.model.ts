@@ -6,9 +6,11 @@ import {
   Model,
   BelongsTo,
   ForeignKey,
+  HasOne,
 } from 'sequelize-typescript';
 import { ClubsModel } from 'src/clubs/clubs.model';
 import { HourseTypesModel } from 'src/hourse-types/hourse-types.model';
+import { HoursesOwnersModel } from 'src/hourses-owners/hourses-owners.model';
 
 export interface HoursesModelCreationAttrib {
   nickname: string;
@@ -68,6 +70,9 @@ export class HoursesModel extends Model<
     allowNull: false,
   })
   birthday: Date;
+
+  @HasOne(() => HoursesOwnersModel)
+  hourse_owner: HoursesOwnersModel;
 
   @BelongsTo(() => HourseTypesModel)
   hourse_type: HourseTypesModel;
