@@ -27,6 +27,8 @@ import { ProductsModule } from './products/products.module';
 import { ProductsModel } from './products/products.model';
 import { CompetitionsModule } from './competitions/competitions.module';
 import { CompetitionsModel } from './competitions/competitions.model';
+import { CompetitionHoursesRiderModel } from './competition-hourses-rider/competition-hourses-rider.model';
+import { CompetitionHoursesRiderModule } from './competition-hourses-rider/competition-hourses-rider.module';
 
 @Module({
   imports: [
@@ -54,6 +56,7 @@ import { CompetitionsModel } from './competitions/competitions.model';
         HoursesOwnersModel,
         ProductsModel,
         CompetitionsModel,
+        CompetitionHoursesRiderModel,
       ],
       logging: false,
     }),
@@ -68,6 +71,7 @@ import { CompetitionsModel } from './competitions/competitions.model';
     ClubsModule,
     HoursesOwnersModule,
     ProductsModule,
+    CompetitionHoursesRiderModule,
     CompetitionsModule,
   ],
   controllers: [AppController],
