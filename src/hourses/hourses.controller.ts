@@ -7,11 +7,12 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { IdValidationPipe } from 'src/pipes/id-validation.pipes';
 import { HourseDto } from './dto/hourse.dto';
 import { HoursesService } from './hourses.service';
 
+@ApiTags('Лошади')
 @Controller('hourses')
 export class HoursesController {
   constructor(private readonly hoursesService: HoursesService) {}

@@ -7,6 +7,7 @@ import {
   BelongsTo,
   ForeignKey,
 } from 'sequelize-typescript';
+import { ClubsModel } from 'src/clubs/clubs.model';
 import { HourseTypesModel } from 'src/hourse-types/hourse-types.model';
 
 export interface HoursesModelCreationAttrib {
@@ -46,6 +47,7 @@ export class HoursesModel extends Model<
   sex: string;
 
   @ApiProperty({ example: '1', description: 'Id клуба' })
+  @ForeignKey(() => ClubsModel)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -69,4 +71,7 @@ export class HoursesModel extends Model<
 
   @BelongsTo(() => HourseTypesModel)
   hourse_type: HourseTypesModel;
+
+  @BelongsTo(() => ClubsModel)
+  club: ClubsModel;
 }
