@@ -15,6 +15,6 @@ export class PersonCreateDto {
   l_name: string;
 
   @IsDate()
-  @ApiProperty({ example: 'yy/MM/dd', description: 'Дата рождения' })
+  @ApiProperty({ example: 'yyyy/MM/dd', description: 'Дата рождения' })
   birthday: Date;
 }

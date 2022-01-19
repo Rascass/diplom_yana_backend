@@ -17,21 +17,21 @@ import { PersonsService } from './persons.service';
 export class PersonsController {
   constructor(private readonly personsService: PersonsService) {}
 
-  @ApiOperation({ summary: 'Создание роли' })
+  @ApiOperation({ summary: 'Создание персоны' })
   @ApiResponse({ status: 201 })
   @Post('create')
   async create(@Body() dto: PersonCreateDto) {
     return await this.personsService.create(dto);
   }
 
-  @ApiOperation({ summary: 'Получение информации о роли' })
+  @ApiOperation({ summary: 'Получение информации о персоне' })
   @ApiResponse({ status: 201 })
   @Get('/:id')
   async get(@Param('id', IdValidationPipe) id: number) {
     return await this.personsService.get(id);
   }
 
-  @ApiOperation({ summary: 'Обновление роли' })
+  @ApiOperation({ summary: 'Обновление персоны' })
   @ApiResponse({ status: 201 })
   @Patch('/:id')
   async update(
@@ -41,7 +41,7 @@ export class PersonsController {
     return await this.personsService.update(id, dto);
   }
 
-  @ApiOperation({ summary: 'Удаление роли' })
+  @ApiOperation({ summary: 'Удаление персоны' })
   @ApiResponse({ status: 201 })
   @Delete('/:id')
   async delete(@Param('id', IdValidationPipe) id: number) {

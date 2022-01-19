@@ -1,0 +1,37 @@
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { CreatePricesDto } from './dto/price-create.dto';
+import { EMPTY_ERROR, NOT_FOUND_ERROR } from './prices.constants';
+import { PricesModel } from './prices.model';
+
+@Injectable()
+export class PriceService {
+  constructor(
+    @InjectModel(PricesModel) private readonly priceModel: typeof PricesModel,
+  ) {}
+
+  async create(dto: CreatePricesDto) {
+    return await this.priceModel.create(dto);
+  }
+
+  async getAll() {
+    let res = await this.priceModel.findAll({ order: [['createdAt', 'DESC']] });
+    if (res.length == 0) {
+      throw new BadRequestException(EMPTY_ERROR);
+    }
+    return res;
+  }
+
+  async update(id: number, dto: CreatePricesDto) {
+    let res = (
+      await this.priceModel.update(
+        { ...dto },
+        { where: { id }, returning: true },
+      )
+    )[1][0];
+    if (!res) {
+      throw new BadRequestException(NOT_FOUND_ERROR);
+    }
+    return res;
+  }
+}

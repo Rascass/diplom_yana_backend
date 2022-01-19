@@ -1,21 +1,21 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateNewsDto } from './dto/news-create.dto';
-import { EMPTY_ERROR, NOT_FOUND_ERROR } from './new.constants';
-import { NewsModel } from './news.model';
+import { CreateNewsDto } from './dto/hire.dto';
+import { EMPTY_ERROR, NOT_FOUND_ERROR } from './hire.constants';
+import { HireModel } from './hire.model';
 
 @Injectable()
-export class NewsService {
+export class HireService {
   constructor(
-    @InjectModel(NewsModel) private readonly newsModel: typeof NewsModel,
+    @InjectModel(HireModel) private readonly hireModel: typeof HireModel,
   ) {}
 
   async create(dto: CreateNewsDto) {
-    return await this.newsModel.create(dto);
+    return await this.hireModel.create(dto);
   }
 
   async getAll() {
-    let res = await this.newsModel.findAll({order: [['createdAt', 'DESC']]});
+    let res = await this.hireModel.findAll({ order: [['createdAt', 'DESC']] });
     if (res.length == 0) {
       throw new BadRequestException(EMPTY_ERROR);
     }
@@ -23,7 +23,7 @@ export class NewsService {
   }
 
   async getById(id: number) {
-    let res = await this.newsModel.findOne({
+    let res = await this.hireModel.findOne({
       where: { id },
     });
     if (!res) {
@@ -34,7 +34,7 @@ export class NewsService {
 
   async update(id: number, dto: CreateNewsDto) {
     let res = (
-      await this.newsModel.update(
+      await this.hireModel.update(
         { ...dto },
         { where: { id }, returning: true },
       )
@@ -46,7 +46,7 @@ export class NewsService {
   }
 
   async delete(id: number) {
-    let res = await this.newsModel.destroy({ where: { id } });
+    let res = await this.hireModel.destroy({ where: { id } });
     if (!res) {
       throw new BadRequestException(NOT_FOUND_ERROR);
     }

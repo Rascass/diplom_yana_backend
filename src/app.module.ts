@@ -29,7 +29,12 @@ import { CompetitionsModule } from './competitions/competitions.module';
 import { CompetitionsModel } from './competitions/competitions.model';
 import { CompetitionHoursesRiderModel } from './competition-hourses-rider/competition-hourses-rider.model';
 import { CompetitionHoursesRiderModule } from './competition-hourses-rider/competition-hourses-rider.module';
-
+import { PriceModule } from './prices/prices.module';
+import { PricesModel } from './prices/prices.model';
+import { ContactsModule } from './contacts/contacts.module';
+import { ContactsModel } from './contacts/contacts.model';
+import { HireModel } from './hire/hire.model';
+import { HireModule } from './hire/hire.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -57,6 +62,9 @@ import { CompetitionHoursesRiderModule } from './competition-hourses-rider/compe
         ProductsModel,
         CompetitionsModel,
         CompetitionHoursesRiderModel,
+        PricesModel,
+        ContactsModel,
+        HireModel,
       ],
       logging: false,
     }),
@@ -73,6 +81,9 @@ import { CompetitionHoursesRiderModule } from './competition-hourses-rider/compe
     ProductsModule,
     CompetitionHoursesRiderModule,
     CompetitionsModule,
+    PriceModule,
+    ContactsModule,
+    HireModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -20,6 +20,14 @@ export class RolesService {
     }
   }
 
+  async getAll() {
+    let res = await this.rolesModel.findAll();
+    if (!res) {
+      throw new BadRequestException(NOT_FOUND_ERROR);
+    }
+    return res;
+  }
+
   async get(id: number) {
     let res = await this.rolesModel.findOne({
       where: { id },

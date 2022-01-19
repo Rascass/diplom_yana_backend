@@ -35,6 +35,13 @@ export class AuthController {
   }
 
   @UsePipes(new ValidationPipe())
+  @HttpCode(200)
+  @Post('validate')
+  async validate(@Body() data: any) {
+    return await this.authService.validate(data.access_token);
+  }
+
+  @UsePipes(new ValidationPipe())
   @Post('create')
   async create(@Body() dto: UserCreateDto) {
     const user = await this.authService.createUser(dto);

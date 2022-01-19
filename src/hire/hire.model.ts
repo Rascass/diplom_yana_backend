@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, DataType, Table, Model } from 'sequelize-typescript';
 
-export interface NewsModelCreationAttrib {
+export interface HireModelCreationAttrib {
   title: string;
   content: string;
 }
 
-@Table({ tableName: 'News' })
-export class NewsModel extends Model<NewsModel, NewsModelCreationAttrib> {
+@Table({ tableName: 'Hires' })
+export class HireModel extends Model<HireModel, HireModelCreationAttrib> {
   @ApiProperty({ example: '1', description: 'Уникальный индификатор' })
   @Column({
     type: DataType.INTEGER,
@@ -17,14 +17,14 @@ export class NewsModel extends Model<NewsModel, NewsModelCreationAttrib> {
   })
   id: number;
 
-  @ApiProperty({ example: 'text', description: 'Заголовок новости' })
+  @ApiProperty({ example: 'text', description: 'Заголовок проката' })
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
   title: string;
 
-  @ApiProperty({ example: 'text', description: 'Текст нвоости' })
+  @ApiProperty({ example: 'text', description: 'Текст проката' })
   @Column({
     type: DataType.TEXT,
     allowNull: false,

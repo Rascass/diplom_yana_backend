@@ -32,6 +32,13 @@ export class RolesController {
     return await this.rolesService.get(id);
   }
 
+  @ApiOperation({ summary: 'Получение всех ролей' })
+  @ApiResponse({ status: 200 })
+  @Get('/')
+  async getAll() {
+    return await this.rolesService.getAll();
+  }
+
   @ApiOperation({ summary: 'Обновление роли' })
   @ApiResponse({ status: 201 })
   @Patch('/:id')

@@ -48,4 +48,16 @@ export class AuthService {
     const payload = { email };
     return { access_token: await this.jwtService.signAsync(payload) };
   }
+
+  async validate(token: string) {
+    try {
+      if (this.jwtService.verify(token)) {
+        return true;
+      }
+    } catch {
+      return false;
+    }
+
+    return false;
+  }
 }

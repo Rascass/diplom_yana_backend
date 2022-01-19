@@ -21,6 +21,7 @@ import { UsersModel } from './users.model';
     }),
     PassportModule,
   ],
+  exports: [AuthService, JwtModule],
   providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}
