@@ -35,6 +35,8 @@ import { ContactsModule } from './contacts/contacts.module';
 import { ContactsModel } from './contacts/contacts.model';
 import { HireModel } from './hire/hire.model';
 import { HireModule } from './hire/hire.module';
+import { IdleModel } from './idle/idle.model';
+import { IdleModule } from './idle/idle.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -65,6 +67,7 @@ import { HireModule } from './hire/hire.module';
         PricesModel,
         ContactsModel,
         HireModel,
+        IdleModel,
       ],
       logging: false,
     }),
@@ -84,6 +87,7 @@ import { HireModule } from './hire/hire.module';
     PriceModule,
     ContactsModule,
     HireModule,
+    IdleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
