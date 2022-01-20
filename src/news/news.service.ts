@@ -16,7 +16,7 @@ export class NewsService {
 
   async getAll() {
     let res = await this.newsModel.findAll({order: [['createdAt', 'DESC']]});
-    if (res.length == 0) {
+    if (res.length === 0) {
       throw new BadRequestException(EMPTY_ERROR);
     }
     return res;

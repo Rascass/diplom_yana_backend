@@ -17,7 +17,7 @@ export class PriceService {
 
   async getAll() {
     let res = await this.priceModel.findAll({ order: [['createdAt', 'DESC']] });
-    if (res.length == 0) {
+    if (res.length === 0) {
       throw new BadRequestException(EMPTY_ERROR);
     }
     return res;
