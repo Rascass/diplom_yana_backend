@@ -39,6 +39,9 @@ import { IdleModel } from './idle/idle.model';
 import { IdleModule } from './idle/idle.module';
 import { SellModel } from './selles/selles.model';
 import { SellModule } from './selles/selles.module';
+import { OrderModel } from './orders/orders.model';
+import { OrderModule } from './orders/orders.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -71,6 +74,7 @@ import { SellModule } from './selles/selles.module';
         HireModel,
         IdleModel,
         SellModel,
+        OrderModel,
       ],
       logging: false,
     }),
@@ -92,6 +96,7 @@ import { SellModule } from './selles/selles.module';
     HireModule,
     IdleModule,
     SellModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
