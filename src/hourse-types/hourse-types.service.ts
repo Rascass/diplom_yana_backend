@@ -24,6 +24,16 @@ export class HourseTypesService {
     return res;
   }
 
+  async getAll() {
+    let res = await this.hourseTypesModel.findAll({
+      order: [['createdAt', 'DESC']],
+    });
+    if (!res) {
+      throw new BadRequestException(NOT_FOUND_ERROR);
+    }
+    return res;
+  }
+
   async update(id: number, dto: { name: string }) {
     let res = (
       await this.hourseTypesModel.update(

@@ -41,7 +41,8 @@ import { SellModel } from './selles/selles.model';
 import { SellModule } from './selles/selles.module';
 import { OrderModel } from './orders/orders.model';
 import { OrderModule } from './orders/orders.module';
-
+import { FeedbackModel } from './feedback/feedback.model';
+import { FeedbackModule } from './feedback/feedback.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -75,6 +76,7 @@ import { OrderModule } from './orders/orders.module';
         IdleModel,
         SellModel,
         OrderModel,
+        FeedbackModel,
       ],
       logging: false,
     }),
@@ -97,6 +99,7 @@ import { OrderModule } from './orders/orders.module';
     IdleModule,
     SellModule,
     OrderModule,
+    FeedbackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

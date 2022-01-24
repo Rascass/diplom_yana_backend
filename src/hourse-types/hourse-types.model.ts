@@ -20,7 +20,7 @@ export class HourseTypesModel extends Model<
   })
   id: number;
 
-  @ApiProperty({ example: 'name', description: 'Имя породы' })
+  @ApiProperty({ example: 'name', description: 'Имя специализации' })
   @Column({
     type: DataType.STRING,
     unique: true,
