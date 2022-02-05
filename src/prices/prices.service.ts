@@ -1,8 +1,15 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  StreamableFile,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 import { CreatePricesDto } from './dto/price-create.dto';
 import { EMPTY_ERROR, NOT_FOUND_ERROR } from './prices.constants';
 import { PricesModel } from './prices.model';
+import * as fs from 'fs';
 
 @Injectable()
 export class PriceService {
@@ -33,5 +40,16 @@ export class PriceService {
       throw new BadRequestException(NOT_FOUND_ERROR);
     }
     return res;
+  }
+
+  async get_file() {
+    fs.writeFileSync(
+      `${process.cwd()}/store/price/price.txt`,
+      (await this.priceModel.findAll({ where: { id: 1 } }))[0].content,
+    );
+    const file = createReadStream(
+      join(process.cwd(), '/store/price/price.txt'),
+    );
+    return new StreamableFile(file);
   }
 }
